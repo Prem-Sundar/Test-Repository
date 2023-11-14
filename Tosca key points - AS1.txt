@@ -1,0 +1,200 @@
+Step 1:
+
+a)Download the Base Subset: Automation Specialist Level 1 Base.tsu from the Learning Management System. 
+b)Tosca & SUT(System under test) --> Modules --> Test Cases --> Execution --> Requirements
+c)Tosca commander with valid license --> Create New --> None(type of repository) --> Enter the name for workspace --> Use workspace template
+d)Types of Repositories:
+Single User
+Multiple User
+e)Import and Export artifacts using Tosca Subsets
+
+Step 2: Add the extension Tricentis to Google chrome by using the following link - https://support.tricentis.com/community/manuals_detail.do?&url=engines_3.0/xbrowser/xbrowser_scan.htm#manual_chrome_extension
+
+Step 3: For the setting up the System under test use the following link by configuring the user details for testing - https://demowebshop.tricentis.com/
+
+Step 4: Tricentis Tosca has Standard modules like, it will be available under Modules --> Standard Modules(Which will get updated with each subsequent tosca release)
+        a)Basic window operations
+        b)Process operations
+        c)Sap
+        d)Specialization
+
+Step 5: Under Standard modules --> TBox XEngines --> Html --> Open Url you can add the description column using Column Chooser
+
+Step 6: The system Display settings and browser settings should be set to 100% for XScan, to start the XScan - Go to Modules --> Right click on module folder --> Scan --> Application
+        Three views are there - Basic/Advanced/Condensed --> Basic view you can scan the links and tabs in demo web shop
+        For Advanced view(includes all the properties and technical information) --> Click Select on Screen for scanning the links and tabs 
+        For Condensed view the XScan window will get minimised
+        Click on Save button to save the scanning and Click on Finish button to create the module and Click on Close button to close the XScan
+        Click on Highlight Selection in Advanced in order to check the selected modules in the SUT
+
+Step 7: XScan has 5 kinds of controls 
+        Identify by Properties
+        Identify by Anchor
+        Identify by Parent
+        Identify by Image
+        Identify by Index
+
+Step 8: a)Identify by properties, check whether the Module is unique or not, for example select the Module "Books" in XScan it will display the message as "This module is not unique"
+        b)Click on Load all properties under Identify by properties and change the property of that module 
+
+Step 9: a)Identify by Anchor, Go to XScan Advanced View --> Expand the Filtered section for the module and it will expand with an UL container --> Select the Outer html and tag properties --> Now select the modules and Click on Identify By Anchor --> Drag and drop the anchor control in the Anchor control properties
+        b)Shortest path(Identifies the control from bottom to top - It is by default) and Co-ordinates
+        c)Select all particular modules --> Convert to control group(In order to keep it as a Simple structure for the selected controls by Anc hor)
+
+Step 10: a)To create a Test Case Structure --> Go to Test Cases --> In Work --> Right click and create new folder --> Again right click and create new test case and change the workstate as In Work
+        
+         b)Within the TestCase Shipping Costs, create the following TestStepFolders:
+         • Precondition
+         • Process
+         • Postcondition
+
+         c)Within the TestStepFolder Process, create the following TestStepFolders:
+         • Order Product
+         • Start Checkout
+         • Checkout Process
+         • Verification of Prices
+         • Confirmation
+         • Verification of Success
+
+Step 10: 
+a) Within the Modules Section, navigate to: Standard Modules >> TBox XEngines >> Html >> OpenUrl.
+b) Drag the Module OpenUrl and drop it into the TestStepFolder Precondition. Rename this TestStep Open Web Shop.
+c) Within the Modules Section, navigate to Tricentis Standard Modules >> TBox XEngines >> Html >> CloseBrowser.
+d) Drag the Module CloseBrowser and drop it into the TestStepFolder Postcondition and rename the TestStep Close Web Shop.
+e) Within the TestCases Section, navigate to the Open Web Shop TestStep and in the value column next to Url enter the following link: http://demowebshop.tricentis.com/.
+f) Navigate to Close Web Shop TestStep and in the value column next to Title enter the text: Demo* and set the ActionMode to Select.
+g) Ensure that you have closed all DemoWebShop browser windows. Right click on the TestCase Shipping Costs and select Run in ScratchBook or click F6.
+h) To add the modules use the shortcut key Ctrl+T to add it in the Test Steps Folder.
+
+Step 11: Add test step using Search and Add TestStep and test step values, for button clicking type as "x"
+
+Step 12: Add test configuration parameters by clicking on the testcase, Parameter as Browser and Value as Chrome, Syntax is {CP[Testconfigurationparameter]}
+Apply specific values to test configuration parameters it can simplify the maintenance of tests & avoid repetitions
+
+Step 13: Action Mode on is used to wait after the login button click, set the value visible==True and Action mode as "WaitOn" under the test case "Post condition"
+
+Types of Action Modes:
+
+ActionMode: Verify - To verify a control means to check whether the control is as expected.
+ActionMode: Select - Select is a passive ActionMode used for navigating tables or dropdown menus, but without engaging with the application.
+ActionMode: Input - Activates a control, or inputs values. 
+ActionMode: Constraint - The ActionMode Constraint can used on a specific list item to identify the respective list item. A combination of selected values can be used to identify the list item.
+ActionMode: WaitOn - With the ActionMode WaitOn, the system waits to execute the appropriate TestStepValue until the specified condition of the control to be steered is fulfilled. The system waits until the control has the value specified in the Value column or the defined
+property
+
+Step 14: A Buffer allows you to store values in Tosca temporarily. These values can be used later on in TestCases to perform a variety of commands, such as verifying values, identifying Modules, InnerText-->PriceBlueJeans and Action Mode as "Buffer"
+
+Buffer can be viewed in the following methods,
+
+Tools --> Buffer Viewer in this you can add and delete the buffer as well
+Project --> Settings --> Engine in this also you can add and delete the buffer as well
+
+a) Buffer should be used in the same test case
+b) {B[Buffername]} --> {B[Automobile]} - This Buffer recalls the value saved under the name "Automobile" and enters it into the TestCase
+
+Step 15:a){RND[7]} to enter the length of random numbers 
+        b){RANDOMREGEX["^[A-Z][a-z]+[0-9]{4}$"]} for regular expressions
+
+Step 16: Use MATH Functions to store the buffer values use the expression {MATH[{B[PriceBlueJeans]}*25]} and select the data type as numeric
+
+Step 17: Use Dynamic Text Function {RANDOMTEXT[10]} to enter any random name and {RND[100][999]} in order enter any random numbers in between the 100 and 999
+
+Step 18: Use Dynamic Dates Function Date|+4M|MM(Four months in future) and Date|+3y|yyyy(Three years in future) and check whether the generated values are correct using "Translate Values"
+
+Step 19: a) A Library greatly reduces the amount of work needed to create the multiple TestCases needed to fully automate TestCases
+         b) Create TestStep Library by Right Clicking on the In_Work Test Case Folder and drag and drop each and every test steps to the created TestStep Library
+
+Step 20: To modify the test step, we use the reusable test step block(RTSB), for this we need to create a new test case and add the test steps and Right Click on the test steps that needs to be reused and select "Resolve Reference"
+
+Step 21: a) To Rescan and merge the modules, select the module to be rescanned and right click on the Webshop Shopping cart --> Select Rescan and add the fields and add the "Value Range"(Discount Codes),
+         AutomationDiscount2
+         PercentageTotal
+         PercentageShipping
+         FlatTotal
+         b) Now select both the modules(Target and Source Module) and Select Modules --> Merge Modules and Switch the modules
+
+Step 22: a) Test Configuration Parameters can be set centrally that can be used in the test cases under the Test Step values, for example set the TCP for Browser, DiscountName and DiscountPercentage
+         b) Use the Created TCP using the Syntax {CP[DiscountName]} and add it into the Test Step values
+
+Step 23: a) To Create Business Parameter, Go to Libraries --> right click on Precondition --> Select Business Parameter --> Create Parameter and add the below parameters
+         Url
+         Email
+         Password
+         b) Go to Exercise 20 Business parameters --> Precondition_Reference --> Business Parameters and enter the Url, Email and Password and Run in Scratchbook
+
+Step 24: a) ExecutionLists do the important job of running the TestCases and storing the results for the executed TestCases. Unlike the ScratchBook, the ExecutionLists store all historic results, which can be consulted if necessary 
+         b) Go to Execution Section --> ExecutionLists --> Right click and select Create New ExecutionLists Folder --> Right click and select Create New ExecutionLists --> Drag and drop the testcases into the ExecutionLists
+
+Step 25: Go to Requirements Section --> Right click and select Create Requirement folder --> Right click and select Create Requirement Set --> Right click and select Create Requirement
+
+Step 26: a) Weight Requirements --> "Pareto Principle" 80% of risk is caused based on 20% of application
+         b) Requirements are weighted based upon the "Frequency Class"(Shows how often each requirement will be used) and "Damage Class"(Degree of financial risk associated with each requirement)
+         c) Weight is ranged from 1 to 10 for the requirements
+
+Step 27: Link Testcases and ExecutionLists to Requirements, 
+         Go to Requirements Section --> Requirements --> 
+         Drag and drop the test cases into the correct requirements --> 
+         Drag and drop the ExecutionLists under Requirements --> 
+         Right click on Requirements and select "Update Outdated values" in order to update the requirement values for any changes
+
+Step 28: a) For Multi User Environment, Go to Create New --> MS SQL Server(Type of repository) --> Get the connection information from Administrator
+         b) Login using the username and password
+         c) Click on Update all in order to refresh and get the information from all the repositories
+         d) The "Red Color" icon indicates that the module is "Checked Out" and it is accessed by some person and it can't be accessed, but you can drag and drop it into any test cases and ExecutionLists
+         e) Go to Home --> Projects for creating another new Project and also we can keep the existing project as well --> Right click on testcases and click on "Check Out symbol" and the icon will change to "Green Color".
+         f) Now we can make the changes and when you create a new test case, "White Color" icon indicates that the test case is not updated with any values
+
+Step 29: a) For WHILE statement, need to create a new Workplace, select the option "Use workspace Template", and use the "AS1_Additional_Material_Base.tsu
+         b) In the Library, create a reusable TestStep block and rename it to "Empty Shopping Cart" and add the "WebShop | Top Menu" modules and rename to the following names,
+            1) Navigate to cart
+            2) Log Out
+            3) Wait Until Logged Out
+            4) Add standard module "CloseBrowser" and rename it to "Close Web Shop"
+         c) Now add the teststep values for the created modules --> Right Click on "Empty Shopping Cart" module --> Select "Create WHILE Statement" --> Drag and drop in between the "Navigate to cart" and "Log Out" module
+         d) Under the "Condition" in "WHILE STATEMENT", rename to "Verify Table Exists" and add the test step values "Exists = True" and Action Mode as "Verify"
+         e) Under the "Loop" in "WHILE STATEMENT", rename to "Empty Cart" and add the test step values Action Mode as "Select" and in the Cell select "Remove" and value as "True" and update shopping cart set as "x"
+         f) Right click the "Empty Shopping Cart" module and "Run in Scratchbook"
+
+Step 30: a) Recovery Scenario is used in order to handle any unwanted Pop-ups, to set the recovery scenario need to change the Properties --> RetryLevel --> Testcase, TestStep or TestStepValue
+         b) Recovery scenarios can be set and run only in ExecutionLists not in Scratchbook
+         c) Go to Project --> Settings --> TBox --> Recovery to enable the Recovery Scenarios
+         d) On dialog failure, exception failure and verification failure should be set the value as "Recovery" in the first 3 properties
+         e) Testcase retry, TestStep retry and TestStepValue retry count should be set in the last 3 properties
+         f) Go to Module --> Select "Create Recovery Scenario Collection"(Ctrl N + Ctrl R) --> Right click and select "Create Recovery Scenario" --> Drag and drop the testcases --> Run the testcases in Execution module using ExecutionLists
+
+Step 31: a) Cleanup Scenarios are used when any Recovery Scenarios is getting failed while running, It will reset the SUT to a clean state and then move on to the execution of the next TestCase
+         b) Right Click on Recovery Scenario --> Select Cleanup scenario(Ctrl + N and Ctrl + C) --> Drag and drop the "Empty Shopping Cart" testcase into the created Cleanup Scenario --> Delete the terms of service --> Run the testcases in Execution module
+
+Step 32: a) Dynamic Comparison is used in order to verify the static values excluding the dynamic part, for example the Field "Order Number" where the number gets on changing.
+         b) Go to the testcase "Verify Order Number" --> Process --> Verification of success --> Right Click and "Resolve Reference" --> Use the syntax "Order number: {XB[OrderNumber]}" in the "InnerText" and Action mode as "Verify"
+
+Step 33: a) Identify by Parent Control can be done by identifying the "Header Object - DIV" after scanning using XScan, for example if in the page there are two unique elements to be scanned, then at that time we can use the "Identify by Parent" in the "Advanced View" of XScan.
+         b) Open Xscan in Advanced View --> Select the "Books" module from web shop --> Drag the "Selected" button in XScan and it will expand --> Check the "Checkbox DIV(Division)" --> Select "Identify by Parent"
+
+Step 34: a) Create Dynamic ID is used in order to identify any Dynamic Information in the SUT
+         b) Go to Modules --> Webshop --> In Work --> Customer --> Additional Material --> Exercise 27 – Identify by Parent and Create Dynamic ID Modules" --> In XScan, scan the modules(Order number, Order total and Details)
+         c) Deselect the property "InnerText" and the property "OuterText" is selected and change its value to "Order Number:*"
+         d) "Order Total" control, select the property "OuterText" and change its value to "Order Total:*"
+
+Step 35: a) Create ExplicitName Attribute to the Configuration parameter in the Properties
+         b) Go to Webshop|Order Details Modules --> Select "Order Overview" and Right on "Properties" --> Select "Create Configuration Param" and enter "ExplicitName" and Value as "True"
+         c) Rename the "Webshop|Order Details" to "Order Details" --> Order Overview to "#1" and Action Mode to "Verify" --> Order Number Value should be given as "Order Number: {B[OrderNumber]}*" --> Run in Scratchbook
+
+Step 36: a) TBox Set Buffer is used to set the Buffer values in your test cases, as we will be storing the Buffer values based on which the SUT will work, but using TBox Set Buffer we can manually set the buffer values for the testcases.
+         b) Go to Standard Modules --> TBox Automation Tools --> Buffer Operations --> TBox Set Buffer --> Drag and drop this module in your Testcase --> Enter the "Buffername" and give Action Mode as "Input" and enter the value field with any number, text and Dynamic expressions
+
+Step 37: a) ResultCount is used to identify the number of counts or occurance for a particular field or value that will appear in the SUT
+         b) Go to Modules --> Drag and drop Webshop|Order successful to the "Set Buffer" test case --> Rename to "Count number of orders" --> In "OrderInfo" enter the syntax "ResultCount==NumberOfOrders" and "ActionMode" as "Buffer"
+         c) Same syntax should be used for getting the "RowCount and ColumnCount" in the SUT
+
+Step 38: a) Repetition Value is a property in Tosca that allows to repeat the steps for a specified number of times within the "test step folder" level 
+         b) Go to Repetition Testcase --> Empty Shopping cart --> Process --> Empty shopping cart --> Add the testcase "Webshop|Shopping Cart" and rename to "Verify Table Exists" and repeat the same steps and rename it to "Count Number of Unique Items in Cart" --> Add "TBox Set Buffer" and rename to "Calculate Items in Cart Without Header"
+         c) Add the Buffer name as "ActualCartNumber" in the testcase "Calculate Items in Cart Without Header" --> Create Subfolder in testcase and rename it as "Select Remove" --> Drag and drop "Update Shopping Cart" testcase --> Add "Webshop|Shopping Cart" module and rename it to "Empty Cart"
+         d) Set the value as "Exists == True" --> ResultCount == CartItems --> RowCount == CartItems --> {MATH[{B{CartItems]}-1]} --> ${Repetition} --> Remove - True
+
+Step 39: a) ActionMode Constraint limits the search in a table to identify a specific item, regardless of where that item sits in the table
+         b) Create a new testcase Folder "Constraint" --> Go to "Remove Music from Shopping Cart" --> Process --> Remove Wrong Item from Shopping Cart --> Add Module "Webshop|Shopping cart" rename to "Remove Music from Shopping Cart"  and repeat the same and rename to "Verify Cart Sub-Total"
+         c) Go to "Remove Music from Shopping Cart" and rename the cell to "Product(s)" --> Select the ActionMode as "Select", "Select", "Constraint", Value as "Music 2"
+         d) Add another cell and rename to "Price", ActionMode as "Constraint" and Value as "*10.00*"
+         e) Add another cell and rename to "Remove", ActionMode as "Select" and Value as "True" --> Add "x" to Update shopping cart Module
+         f) Go to Module "Verify Cart Sub-Total" --> Price Table as "Select", Row as "#2", ActionMode as "Select" and for the cell "Sub-Total" as "28.00" and ActionMode as "Verify" and DataType as "Numeric" 

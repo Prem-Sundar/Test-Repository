@@ -198,5 +198,3 @@ Step 39: a) ActionMode Constraint limits the search in a table to identify a spe
          d) Add another cell and rename to "Price", ActionMode as "Constraint" and Value as "*10.00*"
          e) Add another cell and rename to "Remove", ActionMode as "Select" and Value as "True" --> Add "x" to Update shopping cart Module
          f) Go to Module "Verify Cart Sub-Total" --> Price Table as "Select", Row as "#2", ActionMode as "Select" and for the cell "Sub-Total" as "28.00" and ActionMode as "Verify" and DataType as "Numeric" 
-
-Step 40: Added for Tosca AS2 Automation
